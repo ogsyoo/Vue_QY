@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public/dist')));
 // 拦截设置
-app.use(function (req, res, next) {
+app.use(function (req, res, next) {//暂时未开发
   var url = req.originalUrl;
   // if (url != "/login") {
   //   return res.redirect('/')

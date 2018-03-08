@@ -1,6 +1,8 @@
 <template>
-    <Card style="width:350px;margin:15% auto;padding:28px;text-align:center">
-        <Form ref="formInline" :model="formInline" :rules="ruleInline">
+  <div id="window" style="width:100%;height:100%">
+    <Card style="position:absolute;left:65%;top:40%;width:300px;height:200px;text-align:center">
+        <h3 style="position:absolute;left:45%;">登录</h3>
+        <Form ref="formInline" :model="formInline" :rules="ruleInline" style="margin-top:30px">
             <FormItem prop="user">
                 <Input type="text" v-model="formInline.user" placeholder="用户名称">
                     <Icon type="ios-person-outline" slot="prepend"></Icon>
@@ -11,12 +13,13 @@
                     <Icon type="ios-locked-outline" slot="prepend"></Icon>
                 </Input>
             </FormItem>
-            <FormItem>
+            <FormItem >
                 <Button type="primary" @click="handleSubmit('formInline')">登陆</Button>
                 <Button type="ghost" @click="handleReset('formInline')" style="margin-left: 8px">重置</Button>
              </FormItem>
         </Form>
-    </Card>
+    </Card> 
+  </div>
 </template>
 <script>
 export default {
@@ -42,14 +45,14 @@ export default {
       this.$refs[name].validate(valid => {
         if (valid) {
           var data = {
-            userName:this.$refs[name].model.user,
-            passWord:this.$refs[name].model.password
-          }
+            userName: this.$refs[name].model.user,
+            passWord: this.$refs[name].model.password
+          };
           console.log(data);
-          this.$http.post('/login',data).then(function(res){
-            if(res.data==1){
+          this.$http.post("/login", data).then(function(res) {
+            if (res.data == 1) {
               this.$Message.success("登陆成功!");
-              window.location.href="#/main";
+              window.location.href = "#/main";
             }
           });
         } else {
@@ -63,3 +66,11 @@ export default {
   }
 };
 </script>
+<style>
+#window {
+  background: url("../../assets/img/login.jpg");
+  background-size:100% 100%;
+  /* background-position: center;
+  background-repeat: no-repeat; */
+}
+</style>

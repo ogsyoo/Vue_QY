@@ -1,20 +1,18 @@
 <template>
-   <Menu theme="dark" style="width:100%">
+   <Menu theme="dark" style="width:100%" @on-select="selectMenu">
         <Submenu name="1">
-            <template slot="title">
+            <template slot="title" >
                 <Icon type="ios-paper"></Icon>
-                内容管理
+                测试管理
             </template>
-            <MenuItem name="1-1">文章管理</MenuItem>
-            <MenuItem name="1-2">评论管理</MenuItem>
-            <MenuItem name="1-3">举报管理</MenuItem>
+            <MenuItem name="1-1" @click.native="redirect('#/test')">接口测试</MenuItem>
         </Submenu>
         <Submenu name="2">
             <template slot="title">
                 <Icon type="ios-people"></Icon>
                 用户管理
             </template>
-            <MenuItem name="2-1">新增用户</MenuItem>
+            <MenuItem name="2-1" >新增用户</MenuItem>
             <MenuItem name="2-2">活跃用户</MenuItem>
         </Submenu>
         <Submenu name="3">
@@ -35,10 +33,17 @@
     </Menu>
 </template>
 <script>
-    export default {
-        data () {
-            return {
-            }
-        }
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    redirect(name) {
+      window.location.href = name;
+    },
+    selectMenu(name){
+        console.log(name)
     }
+  }
+};
 </script>

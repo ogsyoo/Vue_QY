@@ -4,7 +4,9 @@
         <v-breadcrumbs divider="/">
             <v-breadcrumbs-item v-for="item in Breadcrumb" :key="item.text"  :href="item.href">{{ item.text }}</v-breadcrumbs-item>
         </v-breadcrumbs>
-        <Tree :data="data2" show-checkbox></Tree>
+        <Card>
+          <Tree :data="data2" show-checkbox></Tree>
+        </Card>
     </div>
 </template>
 <script>
